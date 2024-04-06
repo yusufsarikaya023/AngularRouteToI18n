@@ -13,25 +13,29 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "tr": {
+            "translation": "src/locale/messages.tr.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": true,
+            "i18nMissingTranslation": "error",
+            "i18nDuplicateTranslation": "error",
             "outputPath": "dist/angular-route-to-i18n",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -54,6 +58,9 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "tr": {
+              "localize": ["tr"]
             }
           },
           "defaultConfiguration": "production"
@@ -66,6 +73,9 @@
             },
             "development": {
               "buildTarget": "AngularRouteToI18n:build:development"
+            },
+            "tr": {
+              "buildTarget": "AngularRouteToI18n:build:tr"
             }
           },
           "defaultConfiguration": "development"
@@ -79,19 +89,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }
